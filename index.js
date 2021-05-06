@@ -7,8 +7,8 @@ const port = process.env.PORT;
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
 app.use(bp.json());
-app.use(bp.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bp.urlencoded({ extended: false }));
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -39,7 +39,7 @@ app.get('/allClients', function (req, res) {
 });
 
 app.post('/addClient', function (req, res) {
-    var postData = req.body;
+    let postData = req.body;
     con.query('INSERT INTO client SET ?', postData, function (err, results, fields) {
         if (err) throw err;
         res.send(results);

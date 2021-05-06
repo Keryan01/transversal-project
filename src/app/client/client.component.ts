@@ -1,5 +1,6 @@
 import { ClientService } from './client.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-client',
@@ -8,11 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientComponent implements OnInit {
 
-  constructor(private clientService: ClientService) { }
+  form: FormGroup = this.formBuilder.group({
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: ''
+  });;
+
+  constructor(private formBuilder: FormBuilder, private clientService: ClientService) {  }
 
   clients = this.clientService.getClients();
   
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    return this.clientService.addClient(this.form.getRawValue());
+  }
 }

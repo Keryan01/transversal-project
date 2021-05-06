@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Client } from './client';
@@ -13,5 +14,9 @@ export class ClientService {
 
   getClients() {
     return this.http.get<Client[]>(this.url + "/allClients");
+  }
+
+  addClient(data: String) {
+    return this.http.post<Client>(this.url + "/addClient", data).subscribe();
   }
 }
