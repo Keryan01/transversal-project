@@ -1,0 +1,10 @@
+<h1>client works!</h1>
+<div *ngFor="let client of clients |async">
+    <div>
+        <b>First Name: </b><span>{{client.first_name}}</span><br />
+        <b>Last Name: </b><span>{{client.last_name}}</span><br />
+        <b>Email: </b><span>{{client.email}}</span><br />
+        <b>Password: </b><span>{{client.password}}</span>
+    </div>
+    <hr>
+</div>
