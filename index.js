@@ -45,3 +45,11 @@ app.post('/addClient', function (req, res) {
         res.send(results);
     });
 });
+
+app.post('/addVotation', function (req, res) {
+  let postData = req.body;
+  con.query('INSERT INTO votation SET ?', postData, function (err, results, fields) {
+      if (err) throw err;
+      res.send(results);
+  });
+});

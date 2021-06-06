@@ -1,0 +1,35 @@
+
+
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label for="name">
+        Titre
+      </label>
+      <input id="title" type="text" formControlName="title" >
+    </div>
+
+    <div>
+      <label for="address">
+        Contenu
+      </label>
+      <input id="content" type="text" formControlName="content">
+    </div>
+
+    <div>
+      <label for="creation_date">
+        Date début
+      </label>
+      <input id="content" type="date" formControlName="creation_date">
+    </div>
+    <div>
+      <label for="closing_date">
+        Date fin
+      </label>
+      <input id="content" type="date" formControlName="closing_date">
+    </div>
+
+    <button class="button" type="submit">Créer nouvelle Votation</button>
+
+  </form>
+

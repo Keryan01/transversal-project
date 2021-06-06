@@ -19,4 +19,5 @@ export class ClientService {
   addClient(data: String) {
     return this.http.post<Client>(this.url + "/addClient", data).subscribe();
   }
+
 }
