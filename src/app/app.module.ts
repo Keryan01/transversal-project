@@ -12,12 +12,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DisplayVoteComponent } from './display-vote/display-vote.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { SignupComponent } from './signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
     ClientComponent,
     AddVoteComponent,
-    DisplayVoteComponent
+    DisplayVoteComponent,
+    NavbarComponent,
+    HomeComponent,
+    FooterComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
