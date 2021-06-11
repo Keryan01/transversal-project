@@ -1,5 +1,4 @@
 import { AddVoteComponent } from './add-vote/add-vote.component';
-import { ClientComponent } from './client/client.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -13,10 +12,6 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
-  },
-  {
-    path: 'contact',
-    component: ClientComponent
   },
   {
     path: 'votation',

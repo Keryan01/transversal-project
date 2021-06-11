@@ -31,16 +31,16 @@ app.get('/', function (req, res) {
     res.send('Hello World!');
 });
 
-app.get('/allClients', function (req, res) {
-    con.query('SELECT * FROM client', (err, results) => {
+app.get('/allUsers', function (req, res) {
+    con.query('SELECT * FROM user', (err, results) => {
         if (err) throw err;
         res.send(results);
     });
 });
 
-app.post('/addClient', function (req, res) {
+app.post('/addUser', function (req, res) {
     let postData = req.body;
-    con.query('INSERT INTO client SET ?', postData, function (err, results, fields) {
+    con.query('INSERT INTO user SET ?', postData, function (err, results) {
         if (err) throw err;
         res.send(results);
     });
