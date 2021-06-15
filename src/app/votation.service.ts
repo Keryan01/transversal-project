@@ -9,18 +9,19 @@ import { Component, Output, Input } from '@angular/core';
 })
 export class VotationService {
   private votes:Votation[]=[];
- /* url = "http://localhost:3000";
+  url = "http://localhost:3000";
 
   constructor(private http: HttpClient) { }
-  votation:Votation[]=[]
-  addVotation(data: String) {
-    return this.http.post<Votation>(this.url + "/addVotations", data).subscribe();
-  }*/
-
+  
   addVotation(data: Votation) {
-    this.votes.push(data);
+    ///this.votes.push(data);
+    //this.http.post<Votation>(this.url + "/addTag", {"value":data.tag}).subscribe();
+    this.http.post<Votation>(this.url + "/addVotation", {"title": data.title, "content": data.content, "creation_date":data.creation_date, "closing_date":data.closing_date}).subscribe();
 
+    alert(data.tag)
   }
+
+
   getVotation(){
     return this.votes;
   }

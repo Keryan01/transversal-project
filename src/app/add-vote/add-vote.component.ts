@@ -10,17 +10,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AddVoteComponent implements OnInit {
 
-
-
+  
+  
   postForm: FormGroup = this.formBuilder.group({
 
-    id_client:28,
+    
     title: '',
     content: '',
-    creation_date:Date,
+    creation_date: Date,
     closing_date:Date,
-    tag:112,
-    final_answer: 0.5
+    tag:'',
+    
 
 
 
@@ -28,9 +28,12 @@ export class AddVoteComponent implements OnInit {
   onSubmit() {
 
     this.votationService.addVotation(this.postForm.value);
+    this.postForm.reset();
+    
 
 
   }
+
   constructor(private formBuilder: FormBuilder,public votationService:VotationService) { }
 
   ngOnInit(): void {

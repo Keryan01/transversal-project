@@ -1,12 +1,14 @@
 export interface Votation {
 
 
-  id_client:number,
+  //id:number,
+  user_id: number,
+  tag_id: number,
   title: string,
   content: string,
   creation_date: Date,
   closing_date: Date,
-  tag:number,
+  tag:string,
   final_answer: number
 
 }

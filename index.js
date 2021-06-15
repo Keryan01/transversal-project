@@ -53,3 +53,14 @@ app.post('/addVotation', function (req, res) {
       res.send(results);
   });
 });
+
+app.post('/addTag', function (req, res) {
+    let postData = req.body;
+    
+    con.query('INSERT INTO tag SET ?', postData, function (err, results, fields) {
+        
+        if (err) throw err;
+        res.send(results);
+    });
+  });
+  
