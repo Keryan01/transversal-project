@@ -72,27 +72,16 @@ app.get("/displayvote", function (req, res) {
   });
 });
 
-app.get("/getAnswers/:id", function (req, res) {
-  con.query("SELECT * FROM answer WHERE id = ?", [req.params.id], (err, results) => {
-    if (err) throw err;
-    res.send(results);
-  });
-});
-app.post('/addTag', function (req, res) {
-  let postData = req.body;
-
-  con.query('INSERT INTO tag SET ?', postData, function (err, results, fields) {
-
+app.get("/getAnswers/:votation_id", function (req, res) {
+  con.query("SELECT * FROM answer WHERE votation_id = ?", [req.params.votation_id], (err, results) => {
     if (err) throw err;
     res.send(results);
   });
 });
 
 app.get('/searchTitle/:id', function (req, res) {
-  con.query('select * from votation where id=?',
-    [req.params.id],
-    function (err, results) {
-      if (err) throw err;
-      res.send(results);
-    });
+  con.query('select value from votation where id=?', [req.params.id], function (err, results) {
+    if (err) throw err;
+    res.send(results);
+  });
 });

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class SearchVoteComponent implements OnInit {
   url = "http://localhost:3000";
   votes = this.titleSubmit();
-  title:string='';
+  title: string = '';
 
   titleSearch: FormGroup = this.formBuilder.group({
 
@@ -36,7 +36,7 @@ export class SearchVoteComponent implements OnInit {
 
   titleSubmit() {
 
-    return this.http.get<Votation[]>(this.url+'/searchTitle/'+3);
+    return this.http.get<Votation[]>(this.url + '/searchTitle/' + 3);
 
 
 

@@ -7,15 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultComponent implements OnInit {
 
-    values = this.getValues();
+    values: any;
+    id!: number;
 
     constructor(private http: HttpClient) { }
 
     ngOnInit(): void { }
 
-    getValues() {
-        //return this.http.get<{ id: number, user_id: number, votation_id: number, value: number }[]>("http://localhost:3000/getAnswers/" + 2);
-        return this.http.get<any>("http://localhost:3000/getAnswers/")
+    getValues(id: number) {
+        return this.http.get<any>("http://localhost:3000/getAnswers/" + id);
+    }
+
+    onSubmit() {
+        this.values = this.getValues(this.id);
     }
 
 }
