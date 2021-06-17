@@ -1,6 +1,7 @@
 import { AddVoteComponent } from './add-vote/add-vote.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { SearchVoteComponent } from './search-vote/search-vote.component';
 import { DisplayVoteComponent } from './display-vote/display-vote.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -21,7 +22,13 @@ const routes: Routes = [
   {
     path: 'displayvote',
     component: DisplayVoteComponent
+  },
+
+  {
+  path: 'searchVote',
+  component: SearchVoteComponent
   }
+
 ];
 
 @NgModule({

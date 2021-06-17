@@ -56,17 +56,27 @@ app.post('/addVotation', function (req, res) {
 
 app.post('/addTag', function (req, res) {
     let postData = req.body;
-    
+
     con.query('INSERT INTO tag SET ?', postData, function (err, results, fields) {
-        
+
         if (err) throw err;
         res.send(results);
     });
   });
-  
+
   app.get('/displayvote', function (req, res) {
     con.query('SELECT * FROM votation', (err, results) => {
         if (err) throw err;
         res.send(results);
     });
 });
+
+
+  app.get('/searchTitle/:id', function (req, res) {
+    con.query('select * from votation where id=?',
+    [req.params.id],
+    function (err, results) {
+    if (err) throw err;
+    res.send(results);
+    });
+    });

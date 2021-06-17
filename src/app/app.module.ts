@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './signup/signup.component';
+import { SearchVoteComponent } from './search-vote/search-vote.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { SignupComponent } from './signup/signup.component';
     HomeComponent,
     FooterComponent,
     SignupComponent,
+    SearchVoteComponent,
   ],
   imports: [
     BrowserModule,
