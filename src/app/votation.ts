@@ -2,6 +2,7 @@ export interface Votation {
 
 
   //id:number,
+  id:number,
   user_id: number,
   tag_id: number,
   title: string,

@@ -1,13 +1,13 @@
-<div *ngIf="votes.length>0">
-  <div *ngFor="let vote of votes ">
+
+  <div *ngFor="let vote of votes|async ">
     <hr>
-    <p>{{vote.id_client}}</p>
+    <p>{{vote.id}}</p>
+    <p>{{vote.user_id}}</p>
     <p>{{vote.title}}</p>
     <p>{{vote.content}}</p>
     <p>{{vote.creation_date}}</p>
     <p>{{vote.closing_date}}</p>
-    <p>{{vote.tag}}</p>
-    <p>{{vote.final_answer}}</p>
+
 
 
 
@@ -15,4 +15,4 @@
 
     <hr>
   </div>
-  </div>
+

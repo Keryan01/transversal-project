@@ -64,3 +64,9 @@ app.post('/addTag', function (req, res) {
     });
   });
   
+  app.get('/displayvote', function (req, res) {
+    con.query('SELECT * FROM votation', (err, results) => {
+        if (err) throw err;
+        res.send(results);
+    });
+});
