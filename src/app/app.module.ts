@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './signup/signup.component';
 import { ResultComponent } from './result/result.component';
+import { SearchVoteComponent } from './search-vote/search-vote.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { ResultComponent } from './result/result.component';
     FooterComponent,
     SignupComponent,
     ResultComponent,
+    SearchVoteComponent,
   ],
   imports: [
     BrowserModule,
