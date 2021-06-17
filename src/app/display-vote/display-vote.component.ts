@@ -3,32 +3,23 @@ import { Votation } from '../votation';
 import { VotationService } from '../votation.service';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-display-vote',
   templateUrl: './display-vote.component.html',
-  styleUrls: ['./display-vote.component.css']
 })
 export class DisplayVoteComponent implements OnInit {
-  url = "http://localhost:3000";
+  url = 'http://localhost:3000';
 
-  //votes: Votation[]=[];
-  votes=this.getVotation();
-  constructor(public votationsImporte: VotationService, private http: HttpClient) { }
+  votes = this.getVotation();
 
-  ngOnInit() {
+  constructor(
+    public votationsImporte: VotationService,
+    private http: HttpClient
+  ) { }
 
-    //this.http.get<Votation[]>(this.url);
+  ngOnInit() { }
 
-
-
-    //this.votes = this.votationsImporte.getVotation()
-
-
+  getVotation() {
+    return this.http.get<Votation[]>(this.url + '/displayvote');
   }
-  getVotation(){
-    return this.http.get<Votation[]>(this.url+'/displayvote' );
-
-  }
-
 }
