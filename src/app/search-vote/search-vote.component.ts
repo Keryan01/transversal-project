@@ -9,50 +9,31 @@ import { Observable } from 'rxjs';
   styleUrls: ['./search-vote.component.css']
 })
 export class SearchVoteComponent implements OnInit {
-  url = "http://localhost:3000";
-  votes = this.titleSubmit();
-  title: string = '';
 
-  titleSearch: FormGroup = this.formBuilder.group({
+  values: any;
+  title!: string;
+  content!: string;
 
+  constructor(private http: HttpClient) { }
 
-    title: '3'
+  ngOnInit(): void { }
 
+  getValuesTitle(title:string) {
 
-
-
-  });;
-  contentSearch: FormGroup = this.formBuilder.group({
-
-
-    content: ''
-
-
-
-
-  });;
-
-
-
-  titleSubmit() {
-
-    return this.http.get<Votation[]>(this.url + '/searchTitle/' + 3);
-
-
-
-
-  }
-  contentSubmit() {
-
-
-
-
-
+      return this.http.get<any>("http://localhost:3000/searchTitle/"+title);
   }
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  getValuesContent(content:string) {
 
-  ngOnInit(): void {
+    return this.http.get<any>("http://localhost:3000/searchContent/"+content);
+}
+  onSubmitTitle() {
+      this.values = this.getValuesTitle(this.title);
+
+  }
+  onSubmitContent() {
+    this.values = this.getValuesContent(this.content);
+
   }
 
 }
