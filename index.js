@@ -103,3 +103,10 @@ app.get("/getVotation/:votation_id", function (req, res) {
     res.send(results);
   });
 });
+
+app.get("/getVotationResult/:votation_id", function (req, res) {
+  con.query("SELECT * FROM answer, result WHERE answer.votation_id=result.votation_id", [req.params.votation_id], (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  });
+});
