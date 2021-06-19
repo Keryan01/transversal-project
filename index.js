@@ -96,3 +96,10 @@ app.get('/searchContent/:content', function (req, res) {
     res.send(results);
   });
 });
+
+app.get("/getVotation/:votation_id", function (req, res) {
+  con.query("SELECT * FROM votation,tag WHERE tag.id=votation.tag_id AND votation.id=?", [req.params.votation_id], (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  });
+});

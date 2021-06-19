@@ -17,6 +17,16 @@
 </form>
 
 <div *ngFor="let value of values | async">
-  <p>{{value | json}}</p>
+  <div *ngFor="let value of values | async">
+    <hr>
+    <a [routerLink]="['/selectedVote', value.id]" >
+    <div class="box">
+      <p><b>{{value.title}}</b></p>
+      <p>{{value.content}}</p>
+      <p>{{value.creation_date}}</p>
+      <p>{{value.closing_date}}</p>
+    </div>
+    </a>
+  </div>
 </div>
 

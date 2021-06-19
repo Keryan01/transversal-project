@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Votation } from '../votation';
-import { VotationService } from '../votation.service';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,31 +10,38 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AddVoteComponent implements OnInit {
 
-  
-  
+  url = "http://localhost:3000";
+
   postForm: FormGroup = this.formBuilder.group({
 
-    
+
     title: '',
     content: '',
     creation_date: Date,
     closing_date:Date,
     tag:'',
-    
+
 
 
 
   });;
+
+  addVotation(data: Votation) {
+
+    this.http.post<Votation>(this.url + "/addVotation", {"title": data.title, "content": data.content, "creation_date":data.creation_date, "closing_date":data.closing_date}).subscribe();
+
+
+  }
   onSubmit() {
 
-    this.votationService.addVotation(this.postForm.value);
+    this.addVotation(this.postForm.value);
     this.postForm.reset();
-    
+
 
 
   }
 
-  constructor(private formBuilder: FormBuilder,public votationService:VotationService) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit(): void {
   }

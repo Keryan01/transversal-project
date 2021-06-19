@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Votation } from '../votation';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-search-vote',
   templateUrl: './search-vote.component.html',
@@ -18,6 +19,7 @@ export class SearchVoteComponent implements OnInit {
 
   ngOnInit(): void { }
 
+
   getValuesTitle(title:string) {
 
       return this.http.get<any>("http://localhost:3000/searchTitle/"+title);
@@ -30,9 +32,11 @@ export class SearchVoteComponent implements OnInit {
   onSubmitTitle() {
       this.values = this.getValuesTitle(this.title);
 
+
   }
   onSubmitContent() {
     this.values = this.getValuesContent(this.content);
+
 
   }
 
