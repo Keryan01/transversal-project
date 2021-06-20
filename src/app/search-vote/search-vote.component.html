@@ -1,54 +1,31 @@
-{{title}}
-
-<form [formGroup]="contentSearch" (ngSubmit)="titleSubmit()">
-
-
-
+<form (ngSubmit)="onSubmitTitle()" #form="ngForm">
   <div class="field">
-    <label class="label">Contenu</label>
-    <div class="control">
-      <input id="content" class="input" type="text" placeholder="Titre" formControlName="content" [(ngModel)]=title>
-    </div>
-    <p class="help">recherche par titre </p>
+    <label class="label">Recherche dans le titre de la votation</label>
+    <input type="text" name="id" class="input" [(ngModel)]="title">
   </div>
-
-
-  <button class="button" type="submit">lancer recherche</button>
-
-</form>
-
-<form [formGroup]="titleSearch" (ngSubmit)="contentSubmit()">
-
-
-
-  <div class="field">
-    <label class="label">Contenu</label>
-    <div class="control">
-      <input id="content" class="input" type="text" placeholder="Titre" formControlName="content">
-    </div>
-    <p class="help">recherche par contenu </p>
-  </div>
-
-
-  <button class="button" type="submit">Lance recherche contenu</button>
-
+  <button type="submit" class="button">Submit</button>
 </form>
 
 
 
-<div *ngFor="let vote of votes|async ">
-  <hr>
-  <p>{{vote.id}}</p>
-  <p>{{vote.user_id}}</p>
-  <p>{{vote.title}}</p>
-  <p>{{vote.content}}</p>
-  <p>{{vote.creation_date}}</p>
-  <p>{{vote.closing_date}}</p>
+<form (ngSubmit)="onSubmitContent()" #form="ngForm">
+  <div class="field">
+    <label class="label">Recherche dans la question de la votation</label>
+    <input type="text" name="id" class="input" [(ngModel)]="content">
+  </div>
+  <button type="submit" class="button">Submit</button>
+</form>
 
-
-
-
-
-
-  <hr>
+<div *ngFor="let value of values | async">
+  <div *ngFor="let value of values | async">
+    <hr>
+    <a [routerLink]="['/selectedVote', value.id]">
+      <div class="box">
+        <p><b>{{value.title}}</b></p>
+        <p>{{value.content}}</p>
+        <p>{{value.creation_date}}</p>
+        <p>{{value.closing_date}}</p>
+      </div>
+    </a>
+  </div>
 </div>

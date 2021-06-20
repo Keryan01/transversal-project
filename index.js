@@ -79,8 +79,33 @@ app.get("/getAnswers/:votation_id", function (req, res) {
   });
 });
 
-app.get('/searchTitle/:id', function (req, res) {
-  con.query('select value from votation where id=?', [req.params.id], function (err, results) {
+app.get('/searchTitle/:title', function (req, res) {
+
+  con.query("select * FROM votation where title LIKE "+"'%"+req.params.title+"%'", [req.params.title], function (err, results) {
+
+    if (err) throw err;
+    res.send(results);
+  });
+});
+
+app.get('/searchContent/:content', function (req, res) {
+
+  con.query("select * FROM votation where content LIKE "+"'%"+req.params.content+"%'", [req.params.content], function (err, results) {
+
+    if (err) throw err;
+    res.send(results);
+  });
+});
+
+app.get("/getVotation/:votation_id", function (req, res) {
+  con.query("SELECT * FROM votation,tag WHERE tag.id=votation.tag_id AND votation.id=?", [req.params.votation_id], (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  });
+});
+
+app.get("/getVotationResult/:votation_id", function (req, res) {
+  con.query("SELECT * FROM answer, result WHERE answer.votation_id=result.votation_id", [req.params.votation_id], (err, results) => {
     if (err) throw err;
     res.send(results);
   });

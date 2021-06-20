@@ -3,56 +3,41 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Votation } from '../votation';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-search-vote',
   templateUrl: './search-vote.component.html',
   styleUrls: ['./search-vote.component.css']
 })
 export class SearchVoteComponent implements OnInit {
-  url = "http://localhost:3000";
-  votes = this.titleSubmit();
-  title: string = '';
 
-  titleSearch: FormGroup = this.formBuilder.group({
+  values: any;
+  title!: string;
+  content!: string;
 
+  constructor(private http: HttpClient) { }
 
-    title: '3'
-
-
+  ngOnInit(): void { }
 
 
-  });;
-  contentSearch: FormGroup = this.formBuilder.group({
+  getValuesTitle(title:string) {
 
+      return this.http.get<any>("http://localhost:3000/searchTitle/"+title);
+  }
 
-    content: ''
+  getValuesContent(content:string) {
 
-
-
-
-  });;
-
-
-
-  titleSubmit() {
-
-    return this.http.get<Votation[]>(this.url + '/searchTitle/' + 3);
-
-
+    return this.http.get<any>("http://localhost:3000/searchContent/"+content);
+}
+  onSubmitTitle() {
+      this.values = this.getValuesTitle(this.title);
 
 
   }
-  contentSubmit() {
+  onSubmitContent() {
+    this.values = this.getValuesContent(this.content);
 
 
-
-
-
-  }
-
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
-
-  ngOnInit(): void {
   }
 
 }

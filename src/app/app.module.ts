@@ -17,6 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './signup/signup.component';
 import { ResultComponent } from './result/result.component';
 import { SearchVoteComponent } from './search-vote/search-vote.component';
+import { SelectedVoteComponent } from './selected-vote/selected-vote.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { SearchVoteComponent } from './search-vote/search-vote.component';
     SignupComponent,
     ResultComponent,
     SearchVoteComponent,
+    SelectedVoteComponent,
   ],
   imports: [
     BrowserModule,

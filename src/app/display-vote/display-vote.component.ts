@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Votation } from '../votation';
-import { VotationService } from '../votation.service';
+
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -13,7 +13,7 @@ export class DisplayVoteComponent implements OnInit {
   votes = this.getVotation();
 
   constructor(
-    public votationsImporte: VotationService,
+
     private http: HttpClient
   ) { }
 
