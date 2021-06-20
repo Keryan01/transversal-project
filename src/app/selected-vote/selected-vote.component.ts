@@ -12,7 +12,7 @@ export class SelectedVoteComponent implements OnInit {
 
 
   values: any;
-  id!: number;
+  varid!: string;
 
 
   constructor(private http: HttpClient,private _Activatedroute:ActivatedRoute) { }
@@ -23,12 +23,15 @@ export class SelectedVoteComponent implements OnInit {
   }
 
   getValues() {
-      this.id=Number(this._Activatedroute.snapshot.paramMap.get("id"));
-      return this.http.get<any>("http://localhost:3000/getVotation/"+this.id);
+      this.varid=String(this._Activatedroute.snapshot.paramMap.get("id"));
+      alert(this.varid);
+      return this.http.get<any>("http://localhost:3000/getVotation/"+this.varid);
   }
 
   onSubmit() {
+
       this.values = this.getValues();
+
   }
 
 
