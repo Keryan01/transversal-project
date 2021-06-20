@@ -1,10 +1,3 @@
 <div *ngFor="let vote of votes | async">
-  <hr />
-  <p>{{ vote.id }}</p>
-  <p>{{ vote.user_id }}</p>
-  <p>{{ vote.title }}</p>
-  <p>{{ vote.content }}</p>
-  <p>{{ vote.creation_date }}</p>
-  <p>{{ vote.closing_date }}</p>
-  <hr />
+  <a href="/">{{vote.title}}</a>
 </div>

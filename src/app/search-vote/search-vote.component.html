@@ -1,6 +1,6 @@
 {{title}}
 
- <form [formGroup]="contentSearch" (ngSubmit)="titleSubmit()">
+<form [formGroup]="contentSearch" (ngSubmit)="titleSubmit()">
 
 
 
@@ -15,9 +15,9 @@
 
   <button class="button" type="submit">lancer recherche</button>
 
- </form>
+</form>
 
- <form [formGroup]="titleSearch" (ngSubmit)="contentSubmit()">
+<form [formGroup]="titleSearch" (ngSubmit)="contentSubmit()">
 
 
 
@@ -32,11 +32,11 @@
 
   <button class="button" type="submit">Lance recherche contenu</button>
 
- </form>
+</form>
 
 
 
- <div *ngFor="let vote of votes|async ">
+<div *ngFor="let vote of votes|async ">
   <hr>
   <p>{{vote.id}}</p>
   <p>{{vote.user_id}}</p>
@@ -52,8 +52,3 @@
 
   <hr>
 </div>
-
-
-
-
-
