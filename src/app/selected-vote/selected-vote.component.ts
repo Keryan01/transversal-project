@@ -18,13 +18,14 @@ export class SelectedVoteComponent implements OnInit {
   constructor(private http: HttpClient,private _Activatedroute:ActivatedRoute) { }
 
 
-  ngOnInit(): void {this.onSubmit()
+  ngOnInit(): void {this.onSubmit();
 
   }
 
+
   getValues() {
       this.varid=String(this._Activatedroute.snapshot.paramMap.get("id"));
-      alert(this.varid);
+      alert("http://localhost:3000/getVotation/"+this.varid);
       return this.http.get<any>("http://localhost:3000/getVotation/"+this.varid);
   }
 
