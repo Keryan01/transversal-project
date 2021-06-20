@@ -1,32 +1,40 @@
-<form (ngSubmit)="onSubmitTitle()" #form="ngForm">
-  <div class="field">
-      <label class="label">Recherche dans le titre de la votation</label>
-      <input type="text" name="id" class="input" [(ngModel)]="title">
-  </div>
-  <button type="submit" class="button">Submit</button>
-</form>
+<div class="block">
+  <form (ngSubmit)="onSubmitTitle()" #form="ngForm">
+    <div class="field">
+        <label class="label">Recherche dans le titre de la votation</label>
+        <input type="text" name="id" class="input" [(ngModel)]="title">
+    </div>
+    <button type="submit" class="button">Submit</button>
+  </form>
+</div>
 
+<div class="block">
+  <form (ngSubmit)="onSubmitContent()" #form="ngForm">
+    <div class="field">
+        <label class="label">Recherche dans la question de la votation</label>
+        <input type="text" name="id" class="input" [(ngModel)]="content">
+    </div>
+    <button type="submit" class="button">Submit</button>
+  </form>
+</div>
 
-
-<form (ngSubmit)="onSubmitContent()" #form="ngForm">
-  <div class="field">
-      <label class="label">Recherche dans la question de la votation</label>
-      <input type="text" name="id" class="input" [(ngModel)]="content">
-  </div>
-  <button type="submit" class="button">Submit</button>
-</form>
+<div class="block">
+  <button class="button is-success" (click)="displayAll()">Afficher toutes les votations</button>
+</div>
 
 <div *ngFor="let value of values | async">
-  <div *ngFor="let value of values | async">
     <hr>
-    <a [routerLink]="['/selectedVote', value.id]" >
-    <div class="box">
-      <p><b>{{value.title}}</b></p>
-      <p>{{value.content}}</p>
-      <p>{{value.creation_date}}</p>
-      <p>{{value.closing_date}}</p>
-    </div>
-    </a>
-  </div>
+      <p>{{value|json}}</p>
+      <a [routerLink]="['/selectedVote', value.id]" >
+        <div class="box">
+          <p><b>{{value.title}}</b></p>
+          <p>Question: {{value.content}}</p>
+          <p><b>ID: </b>{{value.id}}</p>
+          <p><b>Date début: </b>{{value.creation_date| date: 'dd-MM-yyyy'}}</p>
+          <p><b>Date fin: </b>{{value.closing_date| date: 'dd-MM-yyyy'}}</p>
+        </div>
+
+      </a>
 </div>
+
 

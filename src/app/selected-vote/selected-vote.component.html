@@ -1,13 +1,14 @@
 
 <div *ngFor="let value of values | async">
-  <p>{{value | json}}</p>
+  <hr>
+<p>{{value|json}}</p>
+  <div class="box">
+    <p><b>{{value.title}}</b></p>
+    <p>Question: {{value.content}}</p>
+    <p><b>ID: </b>{{value.id}}</p>
+    <p><b>Date début: </b>{{value.creation_date| date: 'dd-MM-yyyy'}}</p>
+    <p><b>Date fin: </b>{{value.closing_date| date: 'dd-MM-yyyy'}}</p>
+  </div>
+
 </div>
 
-
-<!--<div class="box">
-  <p><b>{{values.title}}</b></p>
-  <p>{{values.content}}</p>
-  <p>{{values.creation_date}}</p>
-  <p>{{values.closing_date}}</p>
-</div>
--->

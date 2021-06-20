@@ -5,6 +5,7 @@ const bp = require("body-parser");
 const app = express();
 const port = process.env.PORT;
 
+
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: false }));
@@ -66,7 +67,7 @@ app.post("/addTag", function (req, res) {
 });
 
 app.get("/displayvote", function (req, res) {
-  con.query("SELECT * FROM votation", (err, results) => {
+  con.query("SELECT * FROM votation WHERE closing_date>CURDATE()", (err, results) => {
     if (err) throw err;
     res.send(results);
   });
@@ -81,7 +82,7 @@ app.get("/getAnswers/:votation_id", function (req, res) {
 
 app.get('/searchTitle/:title', function (req, res) {
 
-  con.query("select * FROM votation where title LIKE "+"'%"+req.params.title+"%'", [req.params.title], function (err, results) {
+  con.query("select * FROM votation where title LIKE "+"'%"+req.params.title+"%' AND closing_date>CURDATE()", [req.params.title], function (err, results) {
 
     if (err) throw err;
     res.send(results);
@@ -90,7 +91,7 @@ app.get('/searchTitle/:title', function (req, res) {
 
 app.get('/searchContent/:content', function (req, res) {
 
-  con.query("select * FROM votation where content LIKE "+"'%"+req.params.content+"%'", [req.params.content], function (err, results) {
+  con.query("select * FROM votation where content LIKE "+"'%"+req.params.content+"%' AND closing_date>CURDATE()", [req.params.content], function (err, results) {
 
     if (err) throw err;
     res.send(results);
@@ -98,10 +99,12 @@ app.get('/searchContent/:content', function (req, res) {
 });
 
 app.get("/getVotation/:votation_id", function (req, res) {
-  con.query("SELECT * FROM votation,tag WHERE tag.id=votation.tag_id AND votation.id=?", [req.params.votation_id], (err, results) => {
+  con.query("SELECT * FROM votation,tag WHERE tag.id=votation.tag_id AND votation.id=? AND closing_date>CURDATE()", [req.params.votation_id], (err, results) => {
     if (err) throw err;
     res.send(results);
+
   });
+
 });
 
 app.get("/getVotationResult/:votation_id", function (req, res) {
