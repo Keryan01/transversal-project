@@ -99,7 +99,7 @@ app.get('/searchContent/:content', function (req, res) {
 });
 
 app.get("/getVotation/:votation_id", function (req, res) {
-  con.query("SELECT * FROM votation,tag WHERE tag.id=votation.tag_id AND votation.id=? AND closing_date>CURDATE()", [req.params.votation_id], (err, results) => {
+  con.query("SELECT votation.id, user_id, tag_id,title,content, creation_date, closing_date, tag.value FROM votation,tag WHERE tag.id=votation.tag_id AND votation.id=?", [req.params.votation_id], (err, results) => {
     if (err) throw err;
     res.send(results);
 
