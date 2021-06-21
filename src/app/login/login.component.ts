@@ -1,6 +1,8 @@
+import { idModel } from './../idModel';
 import { assertPlatform, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  userId!:any;
+  userId!:idModel[];
   email: string = 'm.heyden97@gmail.com';
   password: string = '123';
   connected=false;
@@ -21,10 +23,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitForm() {
+  getId(): Observable<idModel[]> {
     //this.router.navigate(['/']);
-    this.userId=this.http.get<any>("http://localhost:3000/login/"+this.email+"/"+this.password);
-    this.connectedUser=this.userId;
+    return this.http.get<idModel[]>("http://localhost:3000/login/"+this.email+"/"+this.password);
+
 
 
 
@@ -51,8 +53,9 @@ export class LoginComponent implements OnInit {
     }
     */
   }
-  test(){
-    //alert(this.userId)
+  submitForm(){
+    this.getId().subscribe(data =>this.userId=data);
+    alert(this.userId[0].id);
   }
 
 }

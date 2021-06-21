@@ -23,19 +23,16 @@
 </form>
 
 
-<div *ngFor="let value of userId | async">
-  <hr>
-    <p>{{value.id}}</p>
-    <p>{{value|json}}</p>
+{{userId[0].id}}
 
     <p></p>
-
-</div>
-
+{{userId|json}}
 
 
 
 
 
 
-<button (click)="test()"></button>
+
+
+
