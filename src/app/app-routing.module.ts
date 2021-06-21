@@ -14,7 +14,8 @@ const routes: Routes = [
     { path: 'result', component: ResultComponent },
     { path: 'searchVote', component: SearchVoteComponent },
     { path: 'selectedVote/:id', component: SelectedVoteComponent },
-    { path: 'votations', loadChildren: () => import('./votations/votations.module').then(m => m.VotationsModule) }
+    { path: 'votations', loadChildren: () => import('./votations/votations.module').then(m => m.VotationsModule) },
+    { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) }
 ];
 
 @NgModule({
