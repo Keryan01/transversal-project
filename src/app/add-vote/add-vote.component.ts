@@ -18,8 +18,8 @@ export class AddVoteComponent implements OnInit {
     title: '',
     content: '',
     creation_date: Date,
-    closing_date:Date,
-    tag:'',
+    closing_date: Date,
+    tag: '',
 
 
 
@@ -28,7 +28,7 @@ export class AddVoteComponent implements OnInit {
 
   addVotation(data: Votation) {
 
-    this.http.post<Votation>(this.url + "/addVotation", {"title": data.title, "content": data.content, "creation_date":data.creation_date, "closing_date":data.closing_date}).subscribe();
+    this.http.post<Votation>(this.url + "/addVotation", { "title": data.title, "content": data.content, "creation_date": data.creation_date, "closing_date": data.closing_date }).subscribe();
 
 
   }

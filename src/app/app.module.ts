@@ -19,6 +19,7 @@ import { ResultComponent } from './result/result.component';
 import { SearchVoteComponent } from './search-vote/search-vote.component';
 import { SelectedVoteComponent } from './selected-vote/selected-vote.component';
 import { LoginComponent } from './login/login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
