@@ -36,7 +36,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/login/:email/:password", function (req, res) {
-  con.query("SELECT IFNULL((SELECT id FROM user WHERE email = ? AND password=?), 'empty') AS id",[req.params.email,req.params.password], (err, results) => {
+  con.query("SELECT IFNULL((SELECT id FROM user WHERE email = ? AND password=?), '0') AS id",[req.params.email,req.params.password], (err, results) => {
     if (err) throw err;
     res.send(results);
   });

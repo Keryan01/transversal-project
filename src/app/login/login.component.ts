@@ -3,7 +3,7 @@ import { assertPlatform, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
-
+import {UserAuthService} from '../user-auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   connectedUser!:any;
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, public authService:UserAuthService) { }
 
   ngOnInit(): void {
   }
@@ -55,7 +55,18 @@ export class LoginComponent implements OnInit {
   }
   submitForm(){
     this.getId().subscribe(data =>this.userId=data);
-    alert(this.userId[0].id);
+
+
+  }
+  compare(getId:idModel){
+    if (getId.id=='empty'){
+
+      alert("votre identifiant n'est pas valable ou vous n'êtes pas inscrits sur notre platteforme")
+    }
+    else{
+      alert("Bienvenue, "+getId.id);
+      this.connected=true
+    }
   }
 
 }

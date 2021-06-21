@@ -15,7 +15,7 @@ export class UserLoginComponent implements OnInit {
   password!: string;
   id!: number;
 
-  users = this.userService.getUsers();
+  user!:User;
 
   constructor(private userService: UserService) { }
 
@@ -23,6 +23,14 @@ export class UserLoginComponent implements OnInit {
 
   onSubmit() {
     this.userService.login(this.email, this.password).subscribe(res => this.id = res[0].id);
+    if(this.id==0){
+      alert("vos identifiants ne sont pas valides, ou vous n'êtes pas inscrits à notre plateforme")
+    }
+    else{
+      this.userService.getUser(this.id).subscribe(res => this.user = res[0]);
+      alert("Bienvenue "+ this.user.firstname+"!")
+    }
+
   }
 
 }

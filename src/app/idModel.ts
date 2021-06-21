@@ -1,5 +1,5 @@
 
 
 export interface idModel{
-id:number
+id:string
 }
