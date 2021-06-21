@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSignupComponent implements OnInit {
 
-  constructor() { }
+  firstname!: string;
+  lastname!: string;
+  email!: string;
+  password!: string;
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    this.router.navigate(['']);
+    this.userService.signup(this.firstname, this.lastname, this.email, this.password);
   }
 
 }

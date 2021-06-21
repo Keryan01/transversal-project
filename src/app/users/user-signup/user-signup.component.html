@@ -1,1 +1,40 @@
-<p>user-signup works!</p>
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+
+    <div class="field">
+        <label class="label">First Name</label>
+        <input type="text" name="firstName" class="input" placeholder="e.g. Alex" [(ngModel)]="firstname"
+            #firstNameInput="ngModel" required>
+        <div class="help is-error" *ngIf="firstNameInput.invalid && firstNameInput.touched">
+            This is required!
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Last Name</label>
+        <input type="text" name="lastName" class="input" placeholder="e.g. Smith" [(ngModel)]="lastname"
+            #lastNameInput="ngModel" required>
+        <div class="help is-error" *ngIf="lastNameInput.invalid && lastNameInput.touched">
+            This is required!
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Email</label>
+        <input type="email" name="email" class="input" placeholder="e.g. alex@gmail.com" [(ngModel)]="email"
+            #emailInput="ngModel" required email>
+        <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
+            This is required or needs to be valid email!
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <input type="password" name="password" class="input" placeholder="e.g. opisn21" [(ngModel)]="password"
+            #passwordInput="ngModel" required>
+        <div class="help is-error" *ngIf="passwordInput.invalid && passwordInput.touched">
+            This is required!
+        </div>
+    </div>
+
+    <button type="submit" class="button is-link" [disabled]="contactForm.invalid">Submit</button>
+</form>

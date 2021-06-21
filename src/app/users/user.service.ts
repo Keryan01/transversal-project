@@ -1,7 +1,7 @@
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -13,11 +13,14 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getUsers() {
-        return this.http.get<any>(this.url + '/allUsers');
+        return this.http.get<User[]>(this.url + '/allUsers');
     }
 
-    login() {
-        let users = this.getUsers();
+    login(email: string, password: string): Observable<User[]> {
+        return this.http.get<User[]>("http://localhost:3000/login/" + email + "/" + password);
     }
 
+    signup(firstname: string, lastname: string, email: string, password: string) {
+        return this.http.post<any>(this.url + "/addUser", { "firstname": firstname, "lastname": lastname, "email": email, "password": password }).subscribe();
+    }
 }

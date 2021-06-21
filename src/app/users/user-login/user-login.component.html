@@ -1,13 +1,15 @@
-<section class="section">
-    <div class="container">
-        <div class="columns is-multiline">
-            <div class="column is-12" *ngFor="let user of users|async">
-                <div class="card">
-                    <div class="card-content">
-                        <a routerLink="/users/{{ user.firstname }}">{{ user.firstname }} {{user.lastname}}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+
+    <div class="field">
+        <label class="label">Email</label>
+        <input type="email" name="email" class="input" placeholder="e.g. alex@gmail.com" [(ngModel)]="email">
     </div>
-</section>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <input type="password" name="password" class="input" placeholder="e.g. opisn21" [(ngModel)]="password">
+    </div>
+
+    <button type="submit" class="button is-link">Submit</button>
+</form>
+<h1>{{id|json}}</h1>
