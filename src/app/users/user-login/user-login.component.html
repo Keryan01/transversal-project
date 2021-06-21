@@ -1,15 +1,16 @@
-<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+<form #contactForm="ngForm">
 
     <div class="field">
         <label class="label">Email</label>
-        <input type="email" name="email" class="input" placeholder="e.g. alex@gmail.com" [(ngModel)]="email">
+        <input name="email" class="input" placeholder="e.g. alex@gmail.com" [(ngModel)]="email">
     </div>
 
     <div class="field">
         <label class="label">Password</label>
-        <input type="password" name="password" class="input" placeholder="e.g. opisn21" [(ngModel)]="password">
+        <input name="password" class="input" placeholder="e.g. opisn21" [(ngModel)]="password">
     </div>
 
-    <button type="submit" class="button is-link">Submit</button>
+    <button type="submit" (click)="validate()" class="button is-link">Validate</button>
+    <button type="submit" (click)="submit()" class="button is-link" routerLink=""
+        [disabled]="!validOrNot">Submit</button>
 </form>
-<h1>{{temp}}</h1>

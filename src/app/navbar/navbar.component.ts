@@ -1,11 +1,22 @@
+import { UserService } from './../users/user.service';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {UserAuthService} from '../user-auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
-  constructor(public autService:UserAuthService) { }
 
-  ngOnInit(): void { }
+  user_id: string | null = sessionStorage.getItem("id");
+  user!: string;
+  connected: string | null = sessionStorage.getItem("connected");
+
+  constructor(private http: HttpClient, private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.userService.getUser(Number(this.user_id)).subscribe(res => {
+      this.user = res[0].firstname;
+      this.user = this.user + " " + res[0].lastname;
+    })
+  }
 }

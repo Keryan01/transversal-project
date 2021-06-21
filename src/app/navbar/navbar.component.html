@@ -14,8 +14,9 @@
             <a class="navbar-item" routerLink="result">Results</a>
         </div>
         <div class="navbar-end">
-            <a class="navbar-item" routerLink="users/login">Login</a>
-            <a class="navbar-item" routerLink="users/signup">Sign Up</a>
+            <a class="navbar-item" routerLink="users/id{{user_id}}" *ngIf="connected">{{user}}</a>
+            <a class="navbar-item" routerLink="users/login" *ngIf="!connected">Login</a>
+            <a class="navbar-item" routerLink="users/signup" *ngIf="!connected">Sign Up</a>
         </div>
     </div>
 </div>
