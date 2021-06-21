@@ -9,14 +9,13 @@ export class NavbarComponent implements OnInit {
 
   user_id: string | null = sessionStorage.getItem("id");
   user!: string;
-  connected: string | null = sessionStorage.getItem("connected");
+  connected: boolean = Boolean(sessionStorage.getItem("connected"));
 
-  constructor(private http: HttpClient, private userService: UserService) { }
+  constructor(private http: HttpClient, private userService: UserService) {
+
+  }
 
   ngOnInit(): void {
-    this.userService.getUser(Number(this.user_id)).subscribe(res => {
-      this.user = res[0].firstname;
-      this.user = this.user + " " + res[0].lastname;
-    })
+    this.userService.getUser(Number(this.user_id)).subscribe(res => this.user = res[0].firstname + " " + res[0].lastname)
   }
 }

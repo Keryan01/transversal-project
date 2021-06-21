@@ -34,5 +34,8 @@ export class UserLoginComponent implements OnInit {
   submit(): void {
     sessionStorage.setItem("id", this.id.toString());
     sessionStorage.setItem("connected", "true");
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 }

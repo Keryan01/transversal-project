@@ -23,4 +23,11 @@ export class UserComponent implements OnInit {
     })
   }
 
+  logOut(): void {
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("connected");
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  }
 }
