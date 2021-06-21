@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Votation } from '../votation';
-
 import { HttpClient } from '@angular/common/http';
+import { Votation } from '../votations/votation';
 
 @Component({
   selector: 'app-display-vote',

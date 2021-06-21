@@ -1,4 +1,3 @@
-import { Votation } from './../votation';
 import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
@@ -15,22 +14,23 @@ export class SelectedVoteComponent implements OnInit {
   varid!: string;
 
 
-  constructor(private http: HttpClient,private _Activatedroute:ActivatedRoute) { }
+  constructor(private http: HttpClient, private _Activatedroute: ActivatedRoute) { }
 
 
-  ngOnInit(): void {this.onSubmit();
+  ngOnInit(): void {
+    this.onSubmit();
 
   }
 
 
   getValues() {
-      this.varid=String(this._Activatedroute.snapshot.paramMap.get("id"));
-      return this.http.get<any>("http://localhost:3000/getVotation/"+this.varid);
+    this.varid = String(this._Activatedroute.snapshot.paramMap.get("id"));
+    return this.http.get<any>("http://localhost:3000/getVotation/" + this.varid);
   }
 
   onSubmit() {
 
-      this.values = this.getValues();
+    this.values = this.getValues();
 
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Votation } from '../votation';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Votation } from '../votations/votation';
 
 @Component({
   selector: 'app-add-vote',

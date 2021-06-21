@@ -36,14 +36,14 @@ app.get("/", function (req, res) {
 });
 
 app.get("/login/:email/:password", function (req, res) {
-  con.query("SELECT IFNULL((SELECT id FROM user WHERE email = ? AND password=?), '0') AS id",[req.params.email,req.params.password], (err, results) => {
+  con.query("SELECT IFNULL((SELECT id FROM user WHERE email = ? AND password=?), '0') AS id", [req.params.email, req.params.password], (err, results) => {
     if (err) throw err;
     res.send(results);
   });
 });
 
 app.get("/allUsers/:id", function (req, res) {
-  con.query("SELECT * FROM user WHERE user.id = ?",[req.params.id], (err, results) => {
+  con.query("SELECT * FROM user WHERE user.id = ?", [req.params.id], (err, results) => {
     if (err) throw err;
     res.send(results);
   });
@@ -74,8 +74,8 @@ app.post("/addTag", function (req, res) {
   });
 });
 
-app.get("/displayvote", function (req, res) {
-  con.query("SELECT * FROM votation WHERE closing_date>CURDATE()", (err, results) => {
+app.get("/getVotations", function (req, res) {
+  con.query("SELECT * FROM votation WHERE closing_date > CURDATE()", (err, results) => {
     if (err) throw err;
     res.send(results);
   });
@@ -90,7 +90,7 @@ app.get("/getAnswers/:votation_id", function (req, res) {
 
 app.get('/searchTitle/:title', function (req, res) {
 
-  con.query("select * FROM votation where title LIKE "+"'%"+req.params.title+"%' AND closing_date>CURDATE()", [req.params.title], function (err, results) {
+  con.query("select * FROM votation where title LIKE " + "'%" + req.params.title + "%' AND closing_date>CURDATE()", [req.params.title], function (err, results) {
 
     if (err) throw err;
     res.send(results);
@@ -99,7 +99,7 @@ app.get('/searchTitle/:title', function (req, res) {
 
 app.get('/searchContent/:content', function (req, res) {
 
-  con.query("select * FROM votation where content LIKE "+"'%"+req.params.content+"%' AND closing_date>CURDATE()", [req.params.content], function (err, results) {
+  con.query("select * FROM votation where content LIKE " + "'%" + req.params.content + "%' AND closing_date>CURDATE()", [req.params.content], function (err, results) {
 
     if (err) throw err;
     res.send(results);

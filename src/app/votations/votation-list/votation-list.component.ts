@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { VotationService } from './../votation.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VotationListComponent implements OnInit {
 
-  constructor() { }
+  //votations = this.getVotations();
+  votations = this.votationService.getVotations();
 
-  ngOnInit(): void {
-  }
+  constructor(private http: HttpClient, private votationService: VotationService) { }
 
+  ngOnInit(): void { }
 }

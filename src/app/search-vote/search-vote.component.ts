@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Votation } from '../votation';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { DatePipe } from '@angular/common'
+import { Votation } from '../votations/votation';
 
 @Component({
   selector: 'app-search-vote',
@@ -28,24 +25,24 @@ export class SearchVoteComponent implements OnInit {
 
 
 
-  displayAll(){
+  displayAll() {
 
-    this.values= this.http.get<Votation[]>( "http://localhost:3000/displayvote");
+    this.values = this.http.get<Votation[]>("http://localhost:3000/displayvote");
 
   }
 
 
-  getValuesTitle(title:string) {
+  getValuesTitle(title: string) {
 
-      return this.http.get<any>("http://localhost:3000/searchTitle/"+title);
+    return this.http.get<any>("http://localhost:3000/searchTitle/" + title);
   }
 
-  getValuesContent(content:string) {
+  getValuesContent(content: string) {
 
-    return this.http.get<any>("http://localhost:3000/searchContent/"+content);
-}
+    return this.http.get<any>("http://localhost:3000/searchContent/" + content);
+  }
   onSubmitTitle() {
-      this.values = this.getValuesTitle(this.title);
+    this.values = this.getValuesTitle(this.title);
 
 
   }
