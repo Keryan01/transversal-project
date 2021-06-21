@@ -21,6 +21,6 @@ export class UserService {
     }
 
     signup(firstname: string, lastname: string, email: string, password: string) {
-        return this.http.post<any>(this.url + "/addUser", { "firstname": firstname, "lastname": lastname, "email": email, "password": password }).subscribe();
+        return this.http.post<User[]>(this.url + "/addUser", { "firstname": firstname, "lastname": lastname, "email": email, "password": password }).subscribe();
     }
 }
