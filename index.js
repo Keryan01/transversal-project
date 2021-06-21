@@ -35,12 +35,20 @@ app.get("/", function (req, res) {
   res.send("Hello World!");
 });
 
-app.get("/allUsers", function (req, res) {
-  con.query("SELECT * FROM user", (err, results) => {
+app.get("/login/:email/:password", function (req, res) {
+  con.query("SELECT IFNULL((SELECT id FROM user WHERE email = ? AND password=?), 'empty') AS id",[req.params.email,req.params.password], (err, results) => {
     if (err) throw err;
     res.send(results);
   });
 });
+
+app.get("/allUsers/:id", function (req, res) {
+  con.query("SELECT * FROM user WHERE user.id = ?",[req.params.id], (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  });
+});
+
 
 app.post("/addUser", function (req, res) {
   let postData = req.body;

@@ -25,7 +25,6 @@ export class SelectedVoteComponent implements OnInit {
 
   getValues() {
       this.varid=String(this._Activatedroute.snapshot.paramMap.get("id"));
-      alert("http://localhost:3000/getVotation/"+this.varid);
       return this.http.get<any>("http://localhost:3000/getVotation/"+this.varid);
   }
 
