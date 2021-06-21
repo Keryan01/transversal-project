@@ -15,6 +15,8 @@ export class UserLoginComponent implements OnInit {
 
   user!: User;
 
+  temp!: string | null;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void { }
@@ -28,6 +30,11 @@ export class UserLoginComponent implements OnInit {
       this.userService.getUser(this.id).subscribe(res => this.user = res[0]);
       alert("Bienvenue " + this.user.firstname + "!")
     }
+
+    sessionStorage.setItem("id", this.id.toString());
+    sessionStorage.setItem("connected", "true");
+
+    this.temp = sessionStorage.getItem("connected");
 
   }
 
