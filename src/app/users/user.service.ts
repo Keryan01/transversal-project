@@ -12,8 +12,8 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    getUsers() {
-        return this.http.get<User[]>(this.url + '/allUsers');
+    getUser(id:number) {
+        return this.http.get<User[]>(this.url + '/allUsers/'+id);
     }
 
     login(email: string, password: string): Observable<User[]> {
@@ -23,4 +23,5 @@ export class UserService {
     signup(firstname: string, lastname: string, email: string, password: string) {
         return this.http.post<User[]>(this.url + "/addUser", { "firstname": firstname, "lastname": lastname, "email": email, "password": password }).subscribe();
     }
+
 }
