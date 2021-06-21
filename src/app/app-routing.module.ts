@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchVoteComponent } from './search-vote/search-vote.component';
 import { DisplayVoteComponent } from './display-vote/display-vote.component';
 import { SelectedVoteComponent } from './selected-vote/selected-vote.component';
+import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
     { path: 'displayvote', component: DisplayVoteComponent },
     { path: 'result', component: ResultComponent },
     { path: 'searchVote', component: SearchVoteComponent },
-    { path: 'selectedVote/:id', component: SelectedVoteComponent }
+    { path: 'selectedVote/:id', component: SelectedVoteComponent },
+    { path: 'login', component: LoginComponent }
 
 ];
 
