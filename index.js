@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mysql = require("mysql");
 const bp = require("body-parser");
+
 const app = express();
 const port = process.env.PORT;
 
@@ -116,7 +117,24 @@ app.get("/getVotation/:votation_id", function (req, res) {
 });
 
 app.get("/getVotationResult/:votation_id", function (req, res) {
-  con.query("SELECT * FROM answer, result WHERE answer.votation_id=result.votation_id", [req.params.votation_id], (err, results) => {
+  con.query("SELECT (SUM(value)/COUNT(value)) AS result FROM `answer` WHERE votation_id=?", [req.params.votation_id], (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  });
+});
+
+
+app.post("/addAnswer", function (req, res) {
+  let postData = req.body;
+  console.log(postData)
+  con.query("INSERT INTO answer SET ?", postData, function (err, results) {
+    if (err) throw err;
+    res.send(results);
+  });
+});
+
+app.get("/checkAnswer/:user_id/:votation_id", function (req, res) {
+  con.query("SELECT IFNULL((SELECT id FROM answer WHERE useer_id = ? AND votation_id=?), '0') AS id", [req.params.user_id, req.params.votation_id], (err, results) => {
     if (err) throw err;
     res.send(results);
   });

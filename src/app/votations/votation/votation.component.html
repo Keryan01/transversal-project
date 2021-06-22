@@ -1,1 +1,28 @@
-<p>votation works!</p>
+
+  <div class="card" *ngFor="let votation of values|async">
+      <div class="card">
+          <div class="card-content">
+              <div class="media">
+                  <div class="media-left">
+                      <figure class="image is-48x48">
+                          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                      </figure>
+                  </div>
+                  <div class="media-content">
+                      <a class="title is-4" routerLink="{{votation.id}}">{{votation.title}}</a>
+                  </div>
+              </div>
+
+              <div class="content">
+                  {{votation.content}}<br>
+                  <div type="date">{{votation.creation_date |date}} - {{votation.closing_date |date}}</div>
+              </div>
+              <button type="submit" (click)="voteYes()" class="button is-link">Oui</button>
+              <p> </p>
+              <button type="submit" (click)="voteNo()" class="button is-link">Non</button>
+               <p>Résultat: {{result}}% Oui, {{100-result}}% Non</p>
+            </div>
+
+      </div>
+  </div>
+
