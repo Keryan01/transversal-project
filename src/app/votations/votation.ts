@@ -7,3 +7,8 @@ export interface Votation {
     creation_date: Date;
     closing_date: Date;
 }
+
+export interface Tag {
+    id: number;
+    value: string;
+}

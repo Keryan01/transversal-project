@@ -121,3 +121,10 @@ app.get("/getVotationResult/:votation_id", function (req, res) {
     res.send(results);
   });
 });
+
+app.get("/getTags", function (req, res) {
+  con.query("SELECT * FROM tag", (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  });
+});

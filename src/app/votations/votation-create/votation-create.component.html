@@ -1,1 +1,30 @@
-<p>votation-create works!</p>
+<form #contactForm="ngForm">
+    <div class="field">
+        <label class="label">Titre</label>
+        <input name="title" class="input" type="text" [(ngModel)]="title">
+    </div>
+
+    <div class="field">
+        <label class="label">Contenut</label>
+        <input name="content" class="input" type="text" [(ngModel)]="content">
+    </div>
+
+    <div class="field">
+        <label class="label">Date de Création</label>
+        <input name="creation_date" class="input" type="date" [(ngModel)]="creation_date">
+    </div>
+
+    <div class="field">
+        <label class="label">Date de Fermeture</label>
+        <input name="closing_date" class="input" type="date" [(ngModel)]="closing_date">
+    </div>
+
+    <div *ngFor="let tag of tags">
+        <button class="button" type="button" [ngStyle]="{'background-color':tag.id == tag_id ? 'green' : 'white' }"
+            (click)="chooseTag(tag.id)">{{tag.value}}</button>
+    </div>
+
+
+    <button class="button is-link" type="submit" (click)="onSubmit()">Submit</button>
+
+</form>
