@@ -12,3 +12,7 @@ export interface Tag {
     id: number;
     value: string;
 }
+export interface Result {
+    result: number
+}
+
