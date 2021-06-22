@@ -1,5 +1,5 @@
 
-  <div class="card" *ngFor="let votation of values|async">
+  <div class="card" *ngFor="let vote of votation">
       <div class="card">
           <div class="card-content">
               <div class="media">
@@ -9,19 +9,20 @@
                       </figure>
                   </div>
                   <div class="media-content">
-                      <a class="title is-4" routerLink="{{votation.id}}">{{votation.title}}</a>
+                      <a class="title is-4" routerLink="{{vote.id}}">{{vote.title}}</a>
                   </div>
               </div>
 
               <div class="content">
-                  {{votation.content}}<br>
-                  <div type="date">{{votation.creation_date |date}} - {{votation.closing_date |date}}</div>
+                  {{vote.content}}<br>
+                  <div type="date">{{vote.creation_date |date}} - {{vote.closing_date |date}}</div>
               </div>
-              <button type="submit" (click)="voteYes()" class="button is-link">Oui</button>
+              <button type="submit" (click)="voteYes()" class="button is-link" [disabled]="!connected || isVoted!=0 || userId==vote.user_id">Oui</button>
               <p> </p>
-              <button type="submit" (click)="voteNo()" class="button is-link">Non</button>
-               <p>Résultat: {{result}}% Oui, {{100-result}}% Non</p>
-            </div>
+              <button type="submit" (click)="voteNo()" class="button is-link" [disabled]="!connected || isVoted!=0 || userId==vote.user_id">Non</button>
+
+              <p>Résultat: {{resultYes}}% Oui, {{resultNo}}% Non</p>
+
 
       </div>
   </div>

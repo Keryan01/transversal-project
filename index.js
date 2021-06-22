@@ -126,7 +126,6 @@ app.get("/getVotationResult/:votation_id", function (req, res) {
 
 app.post("/addAnswer", function (req, res) {
   let postData = req.body;
-  console.log(postData)
   con.query("INSERT INTO answer SET ?", postData, function (err, results) {
     if (err) throw err;
     res.send(results);
@@ -134,7 +133,7 @@ app.post("/addAnswer", function (req, res) {
 });
 
 app.get("/checkAnswer/:user_id/:votation_id", function (req, res) {
-  con.query("SELECT IFNULL((SELECT id FROM answer WHERE useer_id = ? AND votation_id=?), '0') AS id", [req.params.user_id, req.params.votation_id], (err, results) => {
+  con.query("SELECT IFNULL((SELECT id FROM answer WHERE user_id =? AND votation_id=?), 0) AS result", [req.params.user_id, req.params.votation_id], (err, results) => {
     if (err) throw err;
     res.send(results);
   });
