@@ -9,10 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VotationListComponent implements OnInit {
 
-  //votations = this.getVotations();
   votations = this.votationService.getVotations();
 
-  constructor(private http: HttpClient, private votationService: VotationService) { }
+  constructor(private votationService: VotationService) { }
 
   ngOnInit(): void { }
 }

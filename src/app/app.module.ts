@@ -12,8 +12,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { ResultComponent } from './result/result.component';
-import { SearchVoteComponent } from './search-vote/search-vote.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +19,6 @@ import { SearchVoteComponent } from './search-vote/search-vote.component';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    ResultComponent,
-    SearchVoteComponent,
   ],
   imports: [
     BrowserModule,

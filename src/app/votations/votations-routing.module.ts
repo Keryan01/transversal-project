@@ -8,8 +8,8 @@ import { VotationSearchComponent } from './votation-search/votation-search.compo
 const routes: Routes = [
   { path: '', component: VotationListComponent },
   { path: 'create', component: VotationCreateComponent },
-  { path: ':id', component: VotationComponent },
-  { path: 'search', component: VotationSearchComponent }
+  { path: 'search', component: VotationSearchComponent },
+  { path: ':id', component: VotationComponent }
 ];
 
 @NgModule({

@@ -1,2 +1,43 @@
-<p>votation-search works!</p>
+<div class="block">
+    <form (ngSubmit)="onSubmitTitle()" #form="ngForm">
+        <div class="field">
+            <label class="label">Recherche dans le titre de la votation</label>
+            <input type="text" name="id" class="input" [(ngModel)]="title">
+        </div>
+        <button type="submit" class="button">Submit</button>
+    </form>
+</div>
 
+<div class="block">
+    <form (ngSubmit)="onSubmitContent()" #form="ngForm">
+        <div class="field">
+            <label class="label">Recherche dans la question de la votation</label>
+            <input type="text" name="id" class="input" [(ngModel)]="content">
+        </div>
+        <button type="submit" class="button">Submit</button>
+    </form>
+</div>
+
+<div class="columns is-multiline">
+    <div class="column is-4" *ngFor="let votation of values|async">
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <a class="title is-4" href="votations/{{votation.id}}">{{votation.title}}</a>
+                    </div>
+                </div>
+
+                <div class="content">
+                    {{votation.content}}<br>
+                    <div type="date">{{votation.creation_date |date}} - {{votation.closing_date |date}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
