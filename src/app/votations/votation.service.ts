@@ -32,10 +32,4 @@ export class VotationService {
 
   }
 
-  checkAnswer(user_id: number, votation_id: number) {
-
-
-    return this.http.get<Result[]>("http://localhost:3000/checkAnswer/" + user_id + "/" + votation_id);
-
-  }
 }
