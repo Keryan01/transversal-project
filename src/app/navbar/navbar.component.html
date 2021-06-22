@@ -9,9 +9,9 @@
         <div class="navbar-start">
             <a class="navbar-item" routerLink="">Home</a>
             <a class="navbar-item" routerLink="votations">Votations</a>
-            <a class="navbar-item" routerLink="searchVote">Recherche Votation</a>
+            <a class="navbar-item" routerLink="votations/search">Recherche Votation</a>
             <a class="navbar-item" routerLink="votations/create" *ngIf="connected">Create Votation</a>
-            <a class="navbar-item" routerLink="result">Results</a>
+
         </div>
         <div class="navbar-end">
             <a class="navbar-item" routerLink="users/id{{user_id}}" *ngIf="connected">{{user}}</a>

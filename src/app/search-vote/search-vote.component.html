@@ -22,17 +22,27 @@
   <button class="button is-success" (click)="displayAll()">Afficher toutes les votations</button>
 </div>
 
-<div *ngFor="let value of values | async">
-  <hr>
-  <p>{{value|json}}</p>
-  <a [routerLink]="['/selectedVote', value.id]">
-    <div class="box">
-      <p><b>{{value.title}}</b></p>
-      <p>Question: {{value.content}}</p>
-      <p><b>ID: </b>{{value.id}}</p>
-      <p><b>Date début: </b>{{value.creation_date| date: 'dd-MM-yyyy'}}</p>
-      <p><b>Date fin: </b>{{value.closing_date| date: 'dd-MM-yyyy'}}</p>
-    </div>
 
-  </a>
+<div class="columns is-multiline">
+  <div class="column is-4" *ngFor="let votation of values|async">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <a class="title is-4" routerLink="votations/{{votation.id}}">{{votation.title}}</a>
+          </div>
+        </div>
+
+        <div class="content">
+          {{votation.content}}<br>
+          <div type="date">{{votation.creation_date |date}} - {{votation.closing_date |date}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
